@@ -28,3 +28,14 @@ resource "docker_container" "servidor_lab" {
     external = var.puerto_externo
   }
 }
+
+# Segundo servidor web del laboratorio (agregado vía GitOps)
+resource "docker_container" "servidor_lab_2" {
+  name  = "servidor-lab-2"
+  image = docker_image.nginx.image_id
+
+  ports {
+    internal = 80
+    external = 8083
+  }
+}
